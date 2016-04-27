@@ -10,9 +10,18 @@
       <img src="../../assets/images/airPlaneNoWhite.png" alt="I'm a Plane">
       <img src="../../assets/images/shippy.jpg" alt="I'm a Boat"><br>
     </p>
-    <p class="animated infinite" ng-class="main.classAnimation">
-      <button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
-    </p>
+    <!--<p class="animated infinite" ng-class="main.classAnimation">-->
+      <!--<button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>-->
+    <!--</p>-->
+    <div ng-show="main.showForm">
+      <label>Select a shipment type to create.</label><br/>
+      <select name="shipmentSelect" id="shipmentSelect" class="form-control"
+              ng-options="type.name for type in main.shipmentOptions track by type.id"
+              ng-model="main.selectedShipmentType">
+
+      </select><br/>
+      <p>{{main.selectedShipmentType}}</p>
+    </div>
     <p>
       With ♥ thanks to the contributions of<acme-malarkey extra-values="['RJ', 'JP']"></acme-malarkey>
     </p>
