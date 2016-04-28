@@ -6,16 +6,21 @@
     .module('createShipment')
     .factory('createShipmentService', createShipmentService);
 
-  createShipmentService.$inject = ['$resource'];
-
-  function createShipmentService($resource){
+  createShipmentService.$inject = ['$q','$http'];
+  function createShipmentService($q, $http){
     var baseUrl = 'http://chrit323:8083/';
-    return $resource(baseUrl,null,{
-      getShipments:{
-        method: 'GET',
-        params:{Url: '@Url'},
-        url: baseUrl + ':Url'
-      }
-    });
+    return{
+      getShipments: getShipments
+    };
+    function getShipments(url){
+      return $http.get(baseUrl + url,{}).then(
+        function (response){
+          return response.data;
+        },
+        function (error){
+          return $q.reject(error);
+        }
+      )
+    }
   }
 })();

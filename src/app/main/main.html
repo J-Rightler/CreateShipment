@@ -14,13 +14,22 @@
       <!--<button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>-->
     <!--</p>-->
     <div ng-show="main.showForm">
+      <label>Select a shipment mode..</label><br/>
+      <select name="shipmentModeSelect" id="shipmentModeSelect" class="form-control"
+              ng-change="main.setShipmentTypeOptions()"
+              ng-model="main.selectedShipmentMode">
+        <option ng-repeat="mode in main.shipmentModeOptions" value="{{mode}}">{{mode}}</option>
+      </select><br/>
       <label>Select a shipment type to create.</label><br/>
       <select name="shipmentSelect" id="shipmentSelect" class="form-control"
-              ng-options="type.name for type in main.shipmentOptions track by type.id"
+              ng-options="type.name for type in main.shipmentTypeOptions track by type.id"
               ng-model="main.selectedShipmentType">
-
       </select><br/>
-      <p>{{main.selectedShipmentType}}</p>
+      <button class="btn btn-primary" ng-click="main.createShipment()">Get Shipment</button>
+      <ul class="list-group">
+      <li class="list-group-item-info" ng-repeat="shipmentNumber in main.shipmentNumbers">{{shipmentNumber}}</li>
+      </ul>
+      <p>{{main.shipmentNumbers}}</p>
     </div>
     <p>
       With ♥ thanks to the contributions of<acme-malarkey extra-values="['RJ', 'JP']"></acme-malarkey>
