@@ -21,6 +21,8 @@
     vm.setShipmentTypeOptions = setShipmentTypeOptions;
     vm.shipmentNumbers = {};
     vm.createShipment = createShipment;
+    vm.showIssueModal = true;
+    
     activate();
 
     var allShipmentOptions = [];
