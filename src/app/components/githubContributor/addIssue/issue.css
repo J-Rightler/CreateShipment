@@ -1,0 +1,8 @@
+.issue-modal-label{
+  color: white;
+}
+.container-row {
+  display: flex; /* or inline-flex */
+  flex-direction: row;
+  justify-content: space-around;
+}
