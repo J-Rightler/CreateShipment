@@ -22,17 +22,18 @@
     vm.shipmentNumbers = {};
     vm.createShipment = createShipment;
     vm.showIssueModal = true;
-    
+
     activate();
 
     var allShipmentOptions = [];
     function getShipmentTypes(){
-      shipmentTypesService.getShipmentTypes().then(function(response){
-        vm.shipmentModeOptions = response.data;
-        shipmentTypesService.getShipmentTypeOptions().then(function(response){
-          allShipmentOptions = response.data.shipmentTypes;
-        });
-      });
+
+      shipmentTypesService.getShipmentTypeOptions().then(
+        function (response) {
+          allShipmentOptions = response.options;
+          vm.shipmentModeOptions = _.map(_.uniqBy(allShipmentOptions, 'Mode'), 'Mode');
+        }
+      );
     }
     function activate() {
       getWebDevTec();
@@ -48,7 +49,7 @@
         });
     }
     function setShipmentTypeOptions(){
-      vm.shipmentTypeOptions = _.get(allShipmentOptions,vm.selectedShipmentMode);
+      vm.shipmentTypeOptions = _.filter(allShipmentOptions, ['Mode', vm.selectedShipmentMode]);
     }
     function showToastr() {
       toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');

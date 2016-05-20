@@ -6,19 +6,38 @@
     .module('createShipment')
     .factory('shipmentTypesService', shipmentTypesService);
 
-  shipmentTypesService.$inject = ['$http'];
+  shipmentTypesService.$inject = ['$http', '$q'];
 
-  function shipmentTypesService($http) {
+  function shipmentTypesService($http, $q) {
+    var baseUrl = 'http://localhost:15019/UiOptions';
+
     return {
-      getShipmentTypes: getShipmentTypes,
+      createShipmentTypeOption: createShipmentTypeOption,
+      updateShipmentTypeOption: updateShipmentTypeOption,
+      deleteShipmentTypeOption: deleteShipmentTypeOption,
       getShipmentTypeOptions: getShipmentTypeOptions
     };
-    function getShipmentTypes() {
+    function createShipmentTypeOption(mode, description, route) {
+      return $http.get('../../assets/shipmentTypes.json');
+    }
+
+    function updateShipmentTypeOption(optionId, mode, description, route) {
+      return $http.get('../../assets/shipmentTypes.json');
+    }
+
+    function deleteShipmentTypeOption(optionId) {
       return $http.get('../../assets/shipmentTypes.json');
     }
 
     function getShipmentTypeOptions() {
-      return $http.get('../../assets/shipmentTypeOptions.json');
+      return $http.get(baseUrl + '/', null)
+        .then(
+          function (response) {
+            return response.data;
+          },
+          function (error) {
+            return $q.reject(error);
+          });
     }
   }
 })();

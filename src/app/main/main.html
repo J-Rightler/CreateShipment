@@ -24,7 +24,7 @@
       </select><br/>
       <label>Select a shipment type to create.</label><br/>
       <select name="shipmentSelect" id="shipmentSelect" class="form-control"
-              ng-options="type.name for type in main.shipmentTypeOptions track by type.id"
+              ng-options="type.Description for type in main.shipmentTypeOptions track by type.optionId"
               ng-model="main.selectedShipmentType">
       </select><br/>
       <button class="btn btn-primary" ng-click="main.createShipment()">Get Shipment</button>
