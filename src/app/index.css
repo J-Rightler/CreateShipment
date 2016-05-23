@@ -12,3 +12,9 @@
 .thumbnail img.pull-right {
   width: 50px;
 }
+
+.td-input {
+  border: none;
+  background-image: none;
+  background: none;
+}

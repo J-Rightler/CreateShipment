@@ -26,7 +26,14 @@
     }
 
     function deleteShipmentTypeOption(optionId) {
-      return $http.get('../../assets/shipmentTypes.json');
+      return $http.delete(baseUrl + '/' + optionId, null).then(
+        function (response) {
+          return response;
+        },
+        function (error) {
+          return $q.reject(error);
+        }
+      )
     }
 
     function getShipmentTypeOptions() {
