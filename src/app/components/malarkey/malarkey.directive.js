@@ -43,7 +43,7 @@
       });*/
 
       scope.$on('$destroy', function () {
-        watcher();
+        //watcher();
       });
     }
 

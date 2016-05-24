@@ -35,7 +35,10 @@
     }
 
     function updateOption(option) {
+      shipmentTypesService.updateShipmentTypeOption(option.OptionId,option.Mode,option.Description,option.Route)
+        .then(function(response){
 
+        });
     }
 
     function deleteOption(option) {

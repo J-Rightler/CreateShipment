@@ -18,11 +18,24 @@
       getShipmentTypeOptions: getShipmentTypeOptions
     };
     function createShipmentTypeOption(mode, description, route) {
-      return $http.get('../../assets/shipmentTypes.json');
+      return $http.post('../../assets/shipmentTypes.json');
     }
 
     function updateShipmentTypeOption(optionId, mode, description, route) {
-      return $http.get('../../assets/shipmentTypes.json');
+      var data = {
+        OptionId: optionId,
+        Mode: mode,
+        Description: description,
+        Route: route
+      };
+      return $http.post(baseUrl + '/' + optionId, data).then(
+        function (response) {
+          return response;
+        },
+        function (error) {
+          return $q.reject(error);
+        }
+      )
     }
 
     function deleteShipmentTypeOption(optionId) {
