@@ -31,6 +31,13 @@
         <td><i class="fa fa-remove" ng-click="optionsManagement.deleteOption(option)"/></td>
         <td><i class="fa fa-save" ng-click="optionsManagement.updateOption(option)"/></td>
       </tr>
+      <tr>
+        <td></td>
+        <td><input ng-model="optionsManagement.newOption.Mode"></td>
+        <td><input ng-model="optionsManagement.newOption.Description"></td>
+        <td><input ng-model="optionsManagement.newOption.Route"></td>
+        <td><i class="fa fa-plus-circle" ng-click="optionsManagement.createOption()"/></td>
+      </tr>
       </tbody>
     </table>
   </div>

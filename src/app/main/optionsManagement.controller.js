@@ -16,6 +16,9 @@
     vm.checkOptionEdit = checkOptionEdit;
     vm.deleteOption = deleteOption;
     vm.updateOption = updateOption;
+    vm.createOption = createOption;
+    vm.newOption = {};
+
     activate();
 
     function activate() {
@@ -34,10 +37,19 @@
       );
     }
 
+    function createOption(){
+      shipmentTypesService.createShipmentTypeOption(vm.newOption.Mode,vm.newOption.Description,vm.newOption.Route)
+        .then(function(response){
+          vm.newOption.OptionId = response.data;
+          vm.newOption.noEdit = true;
+          vm.shipmentOptions.push(vm.newOption);
+          vm.newOption = {};
+        });
+    }
     function updateOption(option) {
       shipmentTypesService.updateShipmentTypeOption(option.OptionId,option.Mode,option.Description,option.Route)
         .then(function(response){
-
+          
         });
     }
 

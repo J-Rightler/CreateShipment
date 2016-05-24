@@ -18,7 +18,19 @@
       getShipmentTypeOptions: getShipmentTypeOptions
     };
     function createShipmentTypeOption(mode, description, route) {
-      return $http.post('../../assets/shipmentTypes.json');
+      var data = {
+        Mode: mode,
+        Description: description,
+        Route: route
+      };
+      return $http.post(baseUrl + '/', data).then(
+        function (response) {
+          return response;
+        },
+        function (error) {
+          return $q.reject(error);
+        }
+      )
     }
 
     function updateShipmentTypeOption(optionId, mode, description, route) {
