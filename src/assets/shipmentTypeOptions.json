@@ -1,0 +1,23 @@
+{"shipmentTypes": {
+  "other": [
+    {
+      "id": 1,
+      "name": "Megan's Shipments",
+      "url": "/Scenarios/MegansShipments"
+    }
+  ],
+  "ocean":[
+    {
+      "id": 2,
+      "name": "Ocean / B2B / Agent Invoice",
+      "url": "Scenarios/OceanB2BAgentInvoice"
+    }
+  ],
+  "air":[
+    {
+      "id": 3,
+      "name": "Air / House / Agent Invoice",
+      "url": "/Scenarios/AirHouseAgentInvoice"
+    }
+  ]
+}}

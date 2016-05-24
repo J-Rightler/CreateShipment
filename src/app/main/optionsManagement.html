@@ -1,0 +1,37 @@
+<div class="container">
+
+  <div>
+    <acme-navbar creation-date="main.creationDate"></acme-navbar>
+  </div>
+  <div>
+    <table>
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Mode</th>
+        <th>Description</th>
+        <th>Route</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <th>Save</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="option in optionsManagement.shipmentOptions">
+        <td>{{option.OptionId}}</td>
+        <td><input ng-blur="optionsManagement.checkOptionEdit(option)" ng-class="{'td-input' : option.noEdit}"
+                   ng-disabled="option.noEdit" ng-model="option.Mode"></td>
+        <td><input ng-blur="optionsManagement.checkOptionEdit(option)" ng-class="{'td-input' : option.noEdit}"
+                   ng-disabled="option.noEdit" ng-model="option.Description"></td>
+        <td><input ng-blur="optionsManagement.checkOptionEdit(option)" ng-class="{'td-input' : option.noEdit}"
+                   ng-disabled="option.noEdit" ng-model="option.Route"></td>
+        <td>
+          <i class="fa fa-pencil-square-o" ng-click="option.noEdit = !option.noEdit" aria-hidden="false"></i>
+        </td>
+        <td><i class="fa fa-remove" ng-click="optionsManagement.deleteOption(option)"/></td>
+        <td><i class="fa fa-save" ng-click="optionsManagement.updateOption(option)"/></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

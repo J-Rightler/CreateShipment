@@ -1,0 +1,12 @@
+<div class="ng-modal container-row" ng-show="vm.show">
+  <div>
+    <label class="issue-modal-label" for="issueTitle">Title</label>
+    <input id="issueTitle" class="input-lg" ng-model="vm.issueTitle"/>
+  </div>
+  <div>
+    <label class="issue-modal-label" for="issueComment">Comment</label>
+    <input id="issueComment" class="input-lg" ng-model="vm.issueBody"/></div>
+  <div>
+    <button class="btn btn-primary" ng-click="vm.addGitHubIssue()">Submit</button>
+  </div>
+</div>

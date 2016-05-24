@@ -3,22 +3,39 @@
   <div>
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
-
+<!--<div>-->
+  <!--<issue-modal show="main.showIssueModal"></issue-modal>-->
+<!--</div>-->
   <div class="jumbotron text-center">
     <h1>Create Shipment(s)</h1>
     <p class="lead">
-      <img src="../../assets/images/blue_airplane_icon.jpg" alt="I'm a Plane">
-      <img src="../../assets/images/ship.jpg" alt="I'm a Boat"><br>
+      <img src="../../assets/images/airPlaneNoWhite.png" alt="I'm a Plane">
+      <img src="../../assets/images/shippy2.png" alt="I'm a Boat"><br>
     </p>
-    <p class="animated infinite" ng-class="main.classAnimation">
-      <button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>
-    </p>
+    <!--<p class="animated infinite" ng-class="main.classAnimation">-->
+      <!--<button type="button" class="btn btn-lg btn-success" ng-click="main.showToastr()">Splendid Toastr</button>-->
+    <!--</p>-->
+    <div ng-show="main.showForm">
+      <label>Select a shipment mode..</label><br/>
+      <select name="shipmentModeSelect" id="shipmentModeSelect" class="form-control"
+              ng-change="main.setShipmentTypeOptions()"
+              ng-model="main.selectedShipmentMode">
+        <option ng-repeat="mode in main.shipmentModeOptions" value="{{mode}}">{{mode}}</option>
+      </select><br/>
+      <label>Select a shipment type to create.</label><br/>
+      <select name="shipmentSelect" id="shipmentSelect" class="form-control"
+              ng-options="type.Description for type in main.shipmentTypeOptions track by type.optionId"
+              ng-model="main.selectedShipmentType">
+      </select><br/>
+      <button class="btn btn-primary" ng-click="main.createShipment()">Get Shipment</button>
+      <p>{{main.shipmentNumbers}}</p>
+    </div>
     <p>
-      With ♥ thanks to the contributions of<acme-malarkey extra-values="['RJ', 'JP', 'PTBM']"></acme-malarkey>
+      With ♥ thanks to the contributions of<acme-malarkey extra-values="['RJ (Commander)', 'JP (Prout)']"></acme-malarkey>
     </p>
   </div>
 
-  <div class="row">
+  <!--<div class="row">
     <div class="col-sm-6 col-md-4" ng-repeat="awesomeThing in main.awesomeThings | orderBy:'rank'">
       <div class="thumbnail">
         <img class="pull-right" ng-src="assets/images/{{ awesomeThing.logo }}" alt="{{ awesomeThing.title }}">
@@ -29,6 +46,6 @@
         </div>
       </div>
     </div>
-  </div>
+  </div>-->
 
 </div>
