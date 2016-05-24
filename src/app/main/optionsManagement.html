@@ -3,6 +3,7 @@
   <div>
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
+  <form name="optionForm" novalidate>
   <div>
     <table>
       <thead>
@@ -20,25 +21,26 @@
       <tr ng-repeat="option in optionsManagement.shipmentOptions">
         <td>{{option.OptionId}}</td>
         <td><input ng-blur="optionsManagement.checkOptionEdit(option)" ng-class="{'td-input' : option.noEdit}"
-                   ng-disabled="option.noEdit" ng-model="option.Mode"></td>
+                   ng-disabled="option.noEdit" ng-model="option.Mode" /></td>
         <td><input ng-blur="optionsManagement.checkOptionEdit(option)" ng-class="{'td-input' : option.noEdit}"
-                   ng-disabled="option.noEdit" ng-model="option.Description"></td>
+                   ng-disabled="option.noEdit" ng-model="option.Description"/></td>
         <td><input ng-blur="optionsManagement.checkOptionEdit(option)" ng-class="{'td-input' : option.noEdit}"
-                   ng-disabled="option.noEdit" ng-model="option.Route"></td>
+                   ng-disabled="option.noEdit" ng-model="option.Route"/></td>
         <td>
           <i class="fa fa-pencil-square-o" ng-click="option.noEdit = !option.noEdit" aria-hidden="false"></i>
         </td>
         <td><i class="fa fa-remove" ng-click="optionsManagement.deleteOption(option)"/></td>
-        <td><i class="fa fa-save" ng-click="optionsManagement.updateOption(option)"/></td>
+        <td><i class="fa fa-save" ng-click="optionsManagement.updateOption(option)" ng-show="!option.noEdit"/></td>
       </tr>
       <tr>
-        <td></td>
-        <td><input ng-model="optionsManagement.newOption.Mode"></td>
-        <td><input ng-model="optionsManagement.newOption.Description"></td>
-        <td><input ng-model="optionsManagement.newOption.Route"></td>
+        <td><i class="fa fa-exclamation-triangle" ng-show="optionForm.$error.required"/></td>
+        <td><input ng-model="optionsManagement.newOption.Mode" required></td>
+        <td><input ng-model="optionsManagement.newOption.Description" required></td>
+        <td><input ng-model="optionsManagement.newOption.Route" required></td>
         <td><i class="fa fa-plus-circle" ng-click="optionsManagement.createOption()"/></td>
       </tr>
       </tbody>
     </table>
   </div>
+  </form>
 </div>
