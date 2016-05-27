@@ -14,7 +14,26 @@
 }
 
 .td-input {
-  border: none;
-  background-image: none;
-  background: none;
+  border: none !important;
+  background-image: none !important;
+  background: none !important;
+}
+
+.btn-default.disabled {
+  background-color: springgreen;
+}
+
+.show-hide-transition {
+  transition: all linear 0.5s;
+}
+
+.show-hide-transition.ng-hide {
+  opacity: 0;
+  transition: all linear 0.5s;
+  animation-delay: 0.5s;
+}
+.show-hide-transition.ng-show {
+  opacity: 0;
+  transition: all linear 0.5s;
+  animation-delay: 0.5s;
 }

@@ -28,7 +28,7 @@
           return response;
         },
         function (error) {
-          return $q.reject(error);
+          return $q.reject(error.data);
         }
       )
     }

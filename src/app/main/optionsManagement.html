@@ -4,43 +4,74 @@
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
   <form name="optionForm" novalidate>
-  <div>
-    <table>
-      <thead>
-      <tr>
-        <th>Id</th>
-        <th>Mode</th>
-        <th>Description</th>
-        <th>Route</th>
-        <th>Edit</th>
-        <th>Delete</th>
-        <th>Save</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr ng-repeat="option in optionsManagement.shipmentOptions">
-        <td>{{option.OptionId}}</td>
-        <td><input ng-blur="optionsManagement.checkOptionEdit(option)" ng-class="{'td-input' : option.noEdit}"
-                   ng-disabled="option.noEdit" ng-model="option.Mode" /></td>
-        <td><input ng-blur="optionsManagement.checkOptionEdit(option)" ng-class="{'td-input' : option.noEdit}"
-                   ng-disabled="option.noEdit" ng-model="option.Description"/></td>
-        <td><input ng-blur="optionsManagement.checkOptionEdit(option)" ng-class="{'td-input' : option.noEdit}"
-                   ng-disabled="option.noEdit" ng-model="option.Route"/></td>
-        <td>
-          <i class="fa fa-pencil-square-o" ng-click="option.noEdit = !option.noEdit" aria-hidden="false"></i>
-        </td>
-        <td><i class="fa fa-remove" ng-click="optionsManagement.deleteOption(option)"/></td>
-        <td><i class="fa fa-save" ng-click="optionsManagement.updateOption(option)" ng-show="!option.noEdit"/></td>
-      </tr>
-      <tr>
-        <td><i class="fa fa-exclamation-triangle" ng-show="optionForm.$error.required"/></td>
-        <td><input ng-model="optionsManagement.newOption.Mode" required></td>
-        <td><input ng-model="optionsManagement.newOption.Description" required></td>
-        <td><input ng-model="optionsManagement.newOption.Route" required></td>
-        <td><i class="fa fa-plus-circle" ng-click="optionsManagement.createOption()"/></td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-  </form>
+    <div>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Id</th>
+          <th>Mode</th>
+          <th>Description</th>
+          <th>Route</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="option in optionsManagement.shipmentOptions">
+          <td>{{option.OptionId}}</td>
+          <td style="max-width: 25%;">
+            <input class="form-control"
+                   ng-blur="optionsManagement.checkOptionEdit(option)"
+                   ng-class="{'td-input' : option.noEdit}"
+                   ng-disabled="option.noEdit" ng-model="option.Mode"
+                   title="Click the edit button to change me...." required/>
+          </td>
+          <td><input class="form-control" ng-blur="optionsManagement.checkOptionEdit(option)"
+                     ng-class="{'td-input' : option.noEdit}"
+                     ng-disabled="option.noEdit" ng-model="option.Description"
+                     title="Click the edit button to change me...." required/></td>
+          <td><input class="form-control" ng-blur="optionsManagement.checkOptionEdit(option)"
+                     ng-class="{'td-input' : option.noEdit}"
+                     ng-disabled="option.noEdit" ng-model="option.Route"
+                     title="Click the edit button to change me...." required/></td>
+          <td>
+            <div class="btn-group">
+              <a class="btn btn-default" ng-click="option.noEdit = !option.noEdit; option.requestSuccess = false;" aria-hidden="false">
+                <i class="fa fa-pencil-square-o" style="color: #e38d13"></i>
+              </a>
+              <a class="btn btn-default" ng-click="optionsManagement.deleteOption(option)">
+                <i class="fa fa-remove" style="color: red"></i>
+              </a>
+              <a class="btn btn-default" ng-click="optionsManagement.updateOption(option)" ng-disabled="option.noEdit" ng-class="{'btn-disabled.disabled' : option.noEdit}">
+                <i class="fa fa-save show-hide-transition" style="color: royalblue" ng-hide="option.requestSuccess"></i>
+                <i class="fa fa-check-circle show-hide-transition" style="color: green" ng-show="option.requestSuccess"></i>
+              </a>
+            </div>
+
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="input-group" style="display: flex; flex-wrap: nowrap;flex-direction: row">
+        <span class="input-group-addon">:)</span>
+        <input type="text" name="newMode" style="max-width: 25%"
+               class="form-control" ng-model="optionsManagement.newOption.Mode" ng-required="true"
+               data-toggle="tooltip" data-placement="bottom"
+               title="Pick a Mode any Mode...." placeholder="Mode">
+        <input class="form-control" ng-model="optionsManagement.newOption.Description"
+               ng-required="true"
+               data-toggle="tooltip" data-placement="bottom" name="newDescription"
+               title="Please be descriptive...." placeholder="Description">
+        <input ng-model="optionsManagement.newOption.Route" ng-required="true"
+               data-toggle="tooltip" data-placement="bottom" class="form-control"
+               title="Start the route with '/'.... " placeholder="Route">
+              <span class="input-group-addon" style="cursor: hand; width: 50px;"
+                    ng-click="optionsManagement.createOption()">
+                <i class="fa fa-plus-circle" style="vertical-align: middle; cursor: hand;"></i>
+              </span>
+      </div>
+      <p ng-show="optionForm.newMode.$invalid && !optionForm.newMode.$pristine" class="help-block">You name is
+        required.</p>
+    </div>
+</div>
+</form>
 </div>
