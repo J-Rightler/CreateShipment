@@ -48,6 +48,9 @@
     }
 
     function createOption(){
+      $scope.$broadcast('show-errors-check-validity');
+      if($scope.optionForm.$invalid) return;
+      
       shipmentTypesService.createShipmentTypeOption(vm.newOption.Mode,vm.newOption.Description,vm.newOption.Route)
         .then(function(response){
           vm.newOption.OptionId = response.data;

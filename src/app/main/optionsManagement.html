@@ -57,29 +57,28 @@
   </div>
   <form name="optionForm">
     <div class="input-group" style="display: flex; flex-wrap: nowrap;flex-direction: row">
-      <span style="width: auto" class="input-group-addon">Add New Option</span>
-      <div style="width: 15%" class="input-group" show-errors
-           ng-class="{'has-error' : optionForm.Mode.$invalid && optionForm.Mode.$dirty}" >
+      <span style="width: auto" class="form-control">Add Option</span>
+      <div style="width: 15%" class="input-group" show-errors ng-model="optionsManagement.newOption.Mode">
         <input type="text" name="Mode" class="form-control"
                ng-model="optionsManagement.newOption.Mode" required
                data-toggle="tooltip" data-placement="bottom"
                title="Pick a Mode any Mode...." placeholder="Mode">
       </div>
       <!--ng-class="{'has-error' : optionForm.Description.$invalid && optionForm.Description.$dirty}"-->
-      <div style="width: 40%" class="input-group" show-errors>
+      <div style="width: 40%" class="input-group" ng-model="optionsManagement.newOption.Description" show-errors>
         <input type="text" name="Description" class="form-control"
                ng-model="optionsManagement.newOption.Description" required
                data-toggle="tooltip" data-placement="bottom"
                title="Please be descriptive...." placeholder="Description">
       </div>
       <!--ng-class="{'has-error' : optionForm.Route.$invalid && optionForm.Route.$dirty}">-->
-      <div style="width: 30%" show-errors>
+      <div style="width: 30%" show-errors ng-model="optionsManagement.newOption.Route">
         <input type="text" name="Route" class="form-control"
-               ng-model="optionsManagement.newOption.Route" required
+               ng-model="optionsManagement.newOption.Route" required show-errors
                data-toggle="tooltip" data-placement="bottom"
                title="Start the route with '/'.... " placeholder="Route">
       </div>
-        <span class="input-group-addon" style="cursor: hand; width: 50px;"
+        <span class="form-control" style="cursor: hand; width: 50px;"
               ng-click="optionsManagement.createOption()">
                 <i class="fa fa-plus-circle" style="vertical-align: middle; cursor: hand;"></i>
         </span>
