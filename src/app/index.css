@@ -23,17 +23,30 @@
   background-color: springgreen;
 }
 
-.show-hide-transition {
-  transition: all linear 0.5s;
+/*.show-hide-transition.ng-show{*/
+  /*opacity: 0;*/
+  /*transition:  all 0.5s ease;*/
+
+/*}*/
+
+/*.show-hide-transition.ng-hide{*/
+  /*opacity: 0;*/
+  /*transition: all 0.5s ease;*/
+  /*animation-delay: 0.5s;*/
+  /*transition-delay: 0.5s;*/
+  /*-moz-animation-delay: 0.5s;*/
+  /*-o-animation-delay: 0.5s;*/
+  /*-webkit-animation-delay: 0.5s;*/
+/*}*/
+.show-hide-transition.ng-hide{
+  opacity: 0;
+
+}
+.show-hide-transition.ng-hide-add{
+  transition: all linear 1.5s;
+  transition-delay: 1.5s;
+}
+.show-hide-transition.ng-hide-remove{
+transition: all linear 1.5s;
 }
 
-.show-hide-transition.ng-hide {
-  opacity: 0;
-  transition: all linear 0.5s;
-  animation-delay: 0.5s;
-}
-.show-hide-transition.ng-show {
-  opacity: 0;
-  transition: all linear 0.5s;
-  animation-delay: 0.5s;
-}

@@ -5,6 +5,7 @@
   </div>
 
   <div>
+    <form>
     <table class="table table-striped">
       <thead>
       <tr>
@@ -18,12 +19,14 @@
       <tbody>
       <tr ng-repeat="option in optionsManagement.shipmentOptions">
         <td>{{option.OptionId}}</td>
-        <td style="max-width: 25%;">
-          <input class="form-control"
+        <td style="max-width: 25%;" show-errors ng-model="option.Mode">
+          <div show-errors ng-model="option.Mode">
+          <input class="form-control" name="editOptionMode"
                  ng-blur="optionsManagement.checkOptionEdit(option)"
                  ng-class="{'td-input' : option.noEdit}"
                  ng-disabled="option.noEdit" ng-model="option.Mode"
                  title="Click the edit button to change me...." required/>
+          </div>
         </td>
         <td><input class="form-control" ng-blur="optionsManagement.checkOptionEdit(option)"
                    ng-class="{'td-input' : option.noEdit}"
@@ -43,17 +46,18 @@
               <i class="fa fa-remove" style="color: red"></i>
             </a>
             <a class="btn btn-default" ng-click="optionsManagement.updateOption(option)" ng-disabled="option.noEdit"
-               ng-class="{'btn-disabled.disabled' : option.noEdit}">
-              <i class="fa fa-save show-hide-transition" style="color: royalblue" ng-hide="option.requestSuccess"></i>
+               ng-class="{'btn-disabled.disabled' : option.noEdit}" style="width: 40px">
+              <i class="fa fa-save show-hide-transition" style="color: royalblue"
+                 ng-hide="option.requestSuccess"></i>
               <i class="fa fa-check-circle show-hide-transition" style="color: green"
-                 ng-show="option.requestSuccess"></i>
+                 ng-hide="!option.requestSuccess"></i>
             </a>
           </div>
-
         </td>
       </tr>
       </tbody>
     </table>
+    </form>
   </div>
   <form name="optionForm">
     <div class="input-group" style="display: flex; flex-wrap: nowrap;flex-direction: row">
