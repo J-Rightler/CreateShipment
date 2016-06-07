@@ -47,10 +47,10 @@
             </a>
             <a class="btn btn-default" ng-click="optionsManagement.updateOption(option)" ng-disabled="option.noEdit"
                ng-class="{'btn-disabled.disabled' : option.noEdit}" style="width: 40px">
-              <i class="fa fa-save show-hide-transition" style="color: royalblue"
-                 ng-hide="option.requestSuccess"></i>
-              <i class="fa fa-check-circle show-hide-transition" style="color: green"
-                 ng-hide="!option.requestSuccess"></i>
+              <i class="fa fa-save" style="color: royalblue"
+                 ng-class="option.requestSuccess ? 'fa-smile-transition' : 'fa-check-transition'"></i>
+              <!--<i class="fa fa-check-circle show-hide-transition" style="color: green"-->
+                 <!--ng-hide="!option.requestSuccess"></i>-->
             </a>
           </div>
         </td>

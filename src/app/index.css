@@ -22,31 +22,42 @@
 .btn-default.disabled {
   background-color: springgreen;
 }
-
-/*.show-hide-transition.ng-show{*/
-  /*opacity: 0;*/
-  /*transition:  all 0.5s ease;*/
-
-/*}*/
-
-/*.show-hide-transition.ng-hide{*/
-  /*opacity: 0;*/
-  /*transition: all 0.5s ease;*/
-  /*animation-delay: 0.5s;*/
-  /*transition-delay: 0.5s;*/
-  /*-moz-animation-delay: 0.5s;*/
-  /*-o-animation-delay: 0.5s;*/
-  /*-webkit-animation-delay: 0.5s;*/
-/*}*/
-.show-hide-transition.ng-hide{
-  opacity: 0;
-
+.fa-check-transition{
+  position: relative;
 }
-.show-hide-transition.ng-hide-add{
+.fa-check-transition:before{
+  content: "\f058";
+  color: green;
+  font-family: FontAwesome;
   transition: all linear 1.5s;
-  transition-delay: 1.5s;
+  font-style: normal;
 }
-.show-hide-transition.ng-hide-remove{
-transition: all linear 1.5s;
+.fa-smile-transition:before{
+  content: "\f118";
+  color: royalblue;
+  font-size: 18px;
+  font-family: FontAwesome;
+  transition: all linear 1.5s;
+  font-style: normal;
+}
+.element {
+  position: relative;
 }
 
+/*replace the content value with the
+corresponding value from the list below*/
+
+.element:before {
+  content: "\f000";
+  font-family: FontAwesome;
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: inherit;
+  /*--adjust as necessary--*/
+  color: #000;
+  font-size: 18px;
+  padding-right: 0.5em;
+  position: absolute;
+  top: 10px;
+  left: 0;
+}
