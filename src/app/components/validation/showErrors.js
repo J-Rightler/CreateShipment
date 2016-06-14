@@ -18,14 +18,21 @@ angular.module('createShipment')
       // only apply the has-error class after the user leaves the text box
       inputNgEl.bind('blur', function() {
         el.toggleClass('has-error', controllers[0][inputName].$invalid);
-      })
-
-      scope.$on('show-errors-check-validity', function() {
-        el.toggleClass('has-error', controllers[0][inputName].$invalid);
       });
 
-      controllers[1].$validators.leadingSlash = function(modelValue) {
-        return _.startsWith(modelValue, '/');
+      scope.$on('show-errors-check-validity', function() {
+        if (angular.isDefined(controllers[0][inputName])){
+          el.toggleClass('has-error', controllers[0][inputName].$invalid);
+        }
+      });
+
+      var v = inputNgEl;
+      var v1 = inputEl;
+      if (angular.isDefined(inputEl) && angular.isDefined(inputEl.name)
+        && inputEl != null && inputEl.name === 'Route'){
+        controllers[1].$validators.leadingSlash = function(modelValue) {
+          return _.startsWith(modelValue, '/');
+        };
       }
     }
   }

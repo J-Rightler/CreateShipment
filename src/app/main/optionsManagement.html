@@ -48,9 +48,7 @@
             <a class="btn btn-default" ng-click="optionsManagement.updateOption(option)" ng-disabled="option.noEdit"
                ng-class="{'btn-disabled.disabled' : option.noEdit}" style="width: 40px">
               <i class="fa fa-save" style="color: royalblue"
-                 ng-class="option.requestSuccess ? 'fa-smile-transition' : 'fa-check-transition'"></i>
-              <!--<i class="fa fa-check-circle show-hide-transition" style="color: green"-->
-                 <!--ng-hide="!option.requestSuccess"></i>-->
+                 ng-class="option.requestSuccess ? 'fa-check-transition' : 'fa fa-save'"></i>
             </a>
           </div>
         </td>
@@ -82,10 +80,10 @@
                data-toggle="tooltip" data-placement="bottom"
                title="Start the route with '/'.... " placeholder="Route">
       </div>
-        <span class="form-control" style="cursor: hand; width: 50px;"
+        <a class="form-control" style="cursor: hand; width: 50px;"
               ng-click="optionsManagement.createOption()">
                 <i class="fa fa-plus-circle" style="vertical-align: middle; cursor: hand;"></i>
-        </span>
+        </a>
     </div>
 </form>
 </div>

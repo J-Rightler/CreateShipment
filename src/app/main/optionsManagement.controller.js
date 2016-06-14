@@ -49,8 +49,9 @@
 
     function createOption(){
       $scope.$broadcast('show-errors-check-validity');
+
       if($scope.optionForm.$invalid) return;
-      
+
       shipmentTypesService.createShipmentTypeOption(vm.newOption.Mode,vm.newOption.Description,vm.newOption.Route)
         .then(function(response){
           vm.newOption.OptionId = response.data;
@@ -58,7 +59,7 @@
           vm.shipmentOptions.push(vm.newOption);
           vm.newOption = {};
         },function (error) {
-            displayError(error)
+            displayError(error);
         });
     }
     function updateOption(option) {
@@ -68,12 +69,17 @@
           //toastr.success('Yea!');
           option.requestSuccess = true;
           //$timeout(removeCheck(option),6000);
+        },function (error) {
+          option.requestSuccess = false;
+          displayError(error);
         });
     }
 
     function deleteOption(option) {
       shipmentTypesService.deleteShipmentTypeOption(option.OptionId).then(function (response) {
-
+        _.remove(vm.shipmentOptions,{'OptionId' : option.OptionId});// shipmentOptions
+      },function (error) {
+        displayError(error)
       });
     }
 

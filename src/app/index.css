@@ -22,6 +22,10 @@
 .btn-default.disabled {
   background-color: springgreen;
 }
+
+.fa-check-circle{
+  color:green;
+}
 .fa-check-transition{
   position: relative;
 }

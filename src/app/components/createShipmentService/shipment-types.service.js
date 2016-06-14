@@ -28,7 +28,8 @@
           return response;
         },
         function (error) {
-          return $q.reject(error.data);
+          return $q.reject(error.data
+          );
         }
       )
     }
